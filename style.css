@@ -1,0 +1,66 @@
+.nav-menu {
+    z-index: 1;
+    position: absolute;
+    background-color: #eee;
+    top: 0;
+    left: 0;
+    width: 20%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.user-panel {
+    display: flex;
+    align-items: center;
+    padding: 8px;
+    background-color: #ddd;
+    gap: 8px;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+}
+
+.user-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 12px;
+    overflow: hidden;
+}
+
+#username-display {
+    font-weight: bold;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.status {
+    color: green;
+    font-size: 10px;
+}
+
+.controls {
+    display: flex;
+    gap: 4px;
+    margin-left: auto;
+}
+
+.control-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+    padding: 4px;
+    border-radius: 4px;
+}
+
+.control-btn:hover {
+    background-color: #ccc;
+}
