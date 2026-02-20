@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Commune - Login</title>
+</head>
+<body>
+
+<div class="login-card">
+    <h2 id="title">Welcome back!</h2>
+    <p id="subtitle">We're so excited to see you again!</p>
+
+    <div class="input-group">
+        <label>Username</label>
+        <input type="text" id="username">
+    </div>
+
+    <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="password">
+    </div>
+
+    <button id="main-btn" onclick="handleAuth()">Log In</button>
+
+    <div class="switch-mode">
+        <span id="toggle-text">Need an account?</span> 
+        <span onclick="toggleMode()" id="toggle-link">Register</span>
+    </div>
+</div>
+<script type="module" src="script.js"></script>
+</body>
+</html>
