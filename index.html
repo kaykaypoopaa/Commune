@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <link rel="stylesheet" href="style.css">
@@ -7,8 +8,44 @@
 </head>
 <body style="display: none;">
     <input type="file" id="avatar-input" accept="image/*" style="display:none">
+
+    <div class="layout">
+
+        <!-- Far-left guild strip -->
+        <div class="guild-strip">
+            <div class="guild-strip-inner" id="guild-list">
+                <div class="guild-icon guild-home active" id="home-btn" title="Home">🏠</div>
+                <div class="guild-strip-divider"></div>
+            </div>
+            <div class="guild-icon guild-add" id="create-guild-btn" title="Create a Server">+</div>
+            <div class="guild-icon guild-join" id="join-guild-btn" title="Join a Server">🔗</div>
+        </div>
+
+        <!-- Channel sidebar -->
+        <div class="sidebar">
+            <div class="sidebar-header" id="sidebar-guild-name">Channels</div>
+            <div class="sidebar-channels-header">
+                <span class="sidebar-section-label">Text Channels</span>
+                <button class="add-channel-btn" id="add-channel-btn" title="Add Channel" style="display:none">+</button>
+            </div>
+            <div id="channel-list"></div>
+        </div>
+
+        <!-- Main chat area -->
+        <div class="chat">
+            <div class="chat-header" id="chat-header">Select a channel</div>
+            <div class="message-list" id="message-list"></div>
+            <div id="typing-indicator"></div>
+            <div class="message-input-area">
+                <input type="text" id="message-input" placeholder="Select a channel to start chatting" autocomplete="off" disabled/>
+                <button id="send-btn" disabled>Send</button>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- User panel -->
     <div class="nav-menu">
-        <div></div>
         <div class="user-panel">
             <img class="avatar" src="https://placehold.co/32x32" id="user-avatar">
             <div class="user-info">
@@ -22,6 +59,86 @@
             </div>
         </div>
     </div>
+
+    <!-- ── Modals ── -->
+
+    <!-- Create / rename guild -->
+    <div class="modal-overlay" id="modal-overlay">
+        <div class="modal">
+            <div class="modal-title" id="modal-title">Create a Server</div>
+            <input type="text" id="guild-name-input" placeholder="My awesome server" class="modal-input" maxlength="48"/>
+            <div class="modal-actions">
+                <button class="modal-btn-cancel" id="modal-cancel">Cancel</button>
+                <button class="modal-btn-create" id="modal-create">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add channel -->
+    <div class="modal-overlay" id="add-channel-overlay">
+        <div class="modal">
+            <div class="modal-title">Add Channel</div>
+            <input type="text" id="channel-name-input" placeholder="new-channel" class="modal-input" maxlength="32"/>
+            <div class="modal-actions">
+                <button class="modal-btn-cancel" id="add-channel-cancel">Cancel</button>
+                <button class="modal-btn-create" id="add-channel-confirm">Create</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rename channel -->
+    <div class="modal-overlay" id="rename-channel-overlay">
+        <div class="modal">
+            <div class="modal-title">Rename Channel</div>
+            <input type="text" id="rename-channel-input" class="modal-input" maxlength="32"/>
+            <div class="modal-actions">
+                <button class="modal-btn-cancel" id="rename-channel-cancel">Cancel</button>
+                <button class="modal-btn-create" id="rename-channel-confirm">Save</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- ── Context Menus ── -->
+
+    <!-- Channel context menu -->
+    <div class="context-menu" id="channel-ctx">
+        <div class="ctx-item" id="ctx-rename-channel">✏️ Rename Channel</div>
+        <div class="ctx-item ctx-danger" id="ctx-delete-channel">🗑️ Delete Channel</div>
+    </div>
+
+    <!-- Message context menu -->
+    <div class="context-menu" id="message-ctx">
+        <div class="ctx-item ctx-danger" id="ctx-delete-message">🗑️ Delete Message</div>
+    </div>
+
+    <!-- Join guild modal -->
+    <div class="modal-overlay" id="join-guild-overlay">
+        <div class="modal">
+            <div class="modal-title">Join a Server</div>
+            <p style="color: var(--text-secondary); font-size: 14px;">Enter an invite code to join an existing server.</p>
+            <input type="text" id="join-code-input" placeholder="e.g. a1b2c3d4" class="modal-input" maxlength="8"/>
+            <div class="modal-actions">
+                <button class="modal-btn-cancel" id="join-cancel">Cancel</button>
+                <button class="modal-btn-create" id="join-confirm">Join</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Invite code modal -->
+    <div class="modal-overlay" id="invite-overlay">
+        <div class="modal">
+            <div class="modal-title">Invite People</div>
+            <p style="color: var(--text-secondary); font-size: 14px;">Share this code with anyone you want to invite.</p>
+            <div class="invite-code-box">
+                <span id="invite-code-display"></span>
+                <button id="copy-invite-btn">Copy</button>
+            </div>
+            <div class="modal-actions">
+                <button class="modal-btn-create" id="invite-close">Done</button>
+            </div>
+        </div>
+    </div>
+
     <script type="module" src="auth.js"></script>
     <script type="module" src="main.js"></script>
 </body>
